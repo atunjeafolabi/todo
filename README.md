@@ -2,29 +2,68 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
+    <h1 align="center">Todo List App</h1>
     <br>
 </p>
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+This todolist task app is implemented using the Yii2 Advanced template.
+The following steps below is for setting up the project after cloning the repository.
+## Installation:
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+```composer install```
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
+### Database Migration
+To setup database table, run the following command from the project root:
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![build](https://github.com/yiisoft/yii2-app-advanced/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-advanced/actions?query=workflow%3Abuild)
+```./yii migrate```
+
+## Serve
+From the project root, start the local PHP server:
+
+```php -S localhost:8000```
+
+### Basic usage
+Using postman, a list of all tasks can be retrieved with:
+
+```http://localhost:8000/api/web/tasks``` 
+
+### Available Endpoints
+The following are the list of endpoints.
+
+```GET /tasks: get all tasks```
+
+```
+POST /tasks: create a new task
+
+{
+    "title": "Sample task",
+    "body": "Lorem ipsom content of sample task"
+}
+```
+
+```GET /tasks/1: return the details of the tasks with id of 1```
+
+```
+PUT /tasks/1: update the task 1
+
+{
+    "completed": 1
+}
+```
+
+```DELETE /tasks/1: delete the task with id of 1```
 
 DIRECTORY STRUCTURE
 -------------------
 
 ```
+api
+    config/              contains api configurations
+    controllers/         contains api controller classes
+    models/              contains api model classes
+    runtime/             contains files generated during runtime
+    web/                 contains the entry script and Web resources
 common
     config/              contains shared configurations
     mail/                contains view files for e-mails
