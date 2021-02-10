@@ -14,7 +14,7 @@ The following steps below is for setting up the project after cloning the reposi
 
 
 ### Database Migration
-To setup database table, run the following command from the project root:
+Create a mysql database named `todo`, then run the following command from the project root:
 
 ```./yii migrate```
 
